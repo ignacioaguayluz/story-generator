@@ -1,27 +1,28 @@
-def read_words_from_file(filepath):
+import json
+
+def read_json(filepath):
     """
-    Reads a text file and returns a list of non-empty lines.
+    Reads a JSON file and returns its content.
 
     Args:
-        filepath (str): Path to the text file.
+        filepath (Path): Path to JSON file.
 
     Returns:
-        list: A list of cleaned strings or None if an erorr occurs.
+        dict | None
     """
-
     try:
-       words = []
-       with open(filepath, 'r', encoding='utf-8') as document:
-        for line in document:
-           cleaned_line = line.strip()
-           if cleaned_line:
-              words.append(cleaned_line)
-        return words
-
+      
+      with open(filepath, "r", encoding="utf-8") as file:
+        data = json.load(file)
+        return data
     except FileNotFoundError:
         print(f"Error: El archivo {filepath} no fue encontrado.")
         return None
+
+    except json.JSONDecodeError:
+        print(f"Error: El archivo {filepath} no tiene formato JSON válido.")
+        return None
     
     except Exception as e:
-      print(f"Ocurrio un error inesperado {e}")
-      return None
+        print(f"Ocurrió un error inesperado: {e}")
+        return None

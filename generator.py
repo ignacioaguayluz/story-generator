@@ -1,28 +1,37 @@
 import random
 
-def generate_sentence(subjects, verbs, complements):
+def weight_random(word_key):
     """
-    Generates a random sentence using provided word lists.
-
-    Args:
-        subjects (list): List of subjects strings.
-        verbs (list): List of verbs strings.
-        complements (list): List of complement strings.
-
-    Returns:
-        str: A generated sentence.
-
-    Raises:
-        ValueError: If any of the lists are empty.
+    Selects a random key from a dictionary using weights.
     """
+    words = list(word_key.keys())
+    weights = list(word_key.values())
 
-    if not subjects or not verbs or not complements:
-        raise ValueError("All input lists must contain at least one element.")
+    return random.choices(words, weights=weights, k=1)[0]
 
-    subject = random.choice(subjects)
-    verb = random.choice(verbs)
-    complement = random.choice(complements)
 
-    sentence = f'{subject} {verb} {complement}.'
+
+def generate_sentence(data_words):
+
+    subjects = data_words["subjects"]
+    verbs = data_words["verbs"]
+    complements = data_words["complements"]
+
+    subject = weight_random(subjects)
+    verb = weight_random(verbs)
+    complement = weight_random(complements)
+
+    templates =[
+        "{subject} {verb} {complement}.",
+        "Un día, {subject} {verb} {complement}.",
+        "De repente, {subject} {verb} {complement}."
+    ]
+
+    template = random.choice(templates)
+
+    sentence = template.format(
+        subject=subject,
+        verb=verb,
+        complement=complement
+    )
     return sentence.capitalize()
-

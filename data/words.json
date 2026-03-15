@@ -1,0 +1,26 @@
+{
+  "subjects": {
+    "el robot": 3,
+    "el programador": 5,
+    "el dragón": 1,
+    "un niño curioso": 3,
+    "un aventurero legendario": 1,
+    "un mapache con botas": 2
+  },
+  "verbs": {
+    "descubrió": 3,
+    "destruyó": 1,
+    "optimizó": 4,
+    "perdió": 2,
+    "encontro": 5,
+    "cabalgaba": 4
+  },
+  "complements": {
+    "el código": 5,
+    "una ciudad perdida": 2,
+    "un castillo embrujado": 3,
+    "un zapato nike": 2,
+    "una llave mágica": 5,
+    "un portal interdimensional": 1
+  }
+}

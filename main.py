@@ -1,36 +1,20 @@
 from pathlib import Path
-from utils import read_words_from_file
+from utils import read_json
 from generator import generate_sentence
 
 BASE_DIR = Path(__file__).resolve().parent
 
 def main():
-    subjects_path = BASE_DIR / "data" / "subjects.txt"
-    verbs_path = BASE_DIR / "data" / "verbs.txt"
-    complements_path = BASE_DIR / "data" / "complements.txt"
+    words_path = BASE_DIR / "data" / "words.json"
+    words_data = read_json(words_path)
 
-
-    subjects = read_words_from_file(subjects_path)
-    verbs = read_words_from_file(verbs_path)
-    complements = read_words_from_file(complements_path)
-
-    files = {
-        "subjects.txt": subjects,
-        "verbs.txt": verbs,
-        "complements.txt": complements
-    }
-
-    for filename, data in files.items():
-        if data is None:
-            print(f"No se pudo leer {filename}.")
-            return
-        
-        if not data:
-            print(f"{filename} esta vacío.")
-            return
+    if words_data is None:
+        print("No se pudieron cargar los datos.")
+        return
     
-    setence = generate_sentence(subjects, verbs, complements)
-    print(setence)
+    sentence = generate_sentence(words_data)
+
+    print(sentence)
 
 if __name__ == "__main__":
     main()
