@@ -1,10 +1,12 @@
 from flask import Flask, render_template
-from generator import generate_sentence
+from generator import generate_story
 from utils import read_json
 from pathlib import Path
 
 app = Flask(__name__)
 BASE_DIR = Path(__file__).resolve().parent
+words_path = BASE_DIR / "data" / "words.json"
+words_data = read_json(words_path)
 
 @app.route("/")
 def home():
@@ -13,16 +15,13 @@ def home():
 
 @app.route("/story")
 def story():
-    words_path = BASE_DIR / "data" / "words.json"
-    words_data = read_json(words_path)
-
     if words_data is None:
         print("No se pudieron cargar los datos.")
         return
     
-    sentence = generate_sentence(words_data)
+    story = generate_story(words_data)
 
-    return render_template("story.html", sentence=sentence)
+    return render_template("story.html", story=story)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,17 +3,17 @@
     "el robot": 3,
     "el programador": 5,
     "el dragón": 1,
-    "un niño curioso": 3,
-    "un aventurero legendario": 1,
+    "Un niño curioso": 3,
+    "Un aventurero legendario": 1,
     "un mapache con botas": 2
   },
   "verbs": {
-    "descubrió": 3,
-    "destruyó": 1,
-    "optimizó": 4,
-    "perdió": 2,
-    "encontro": 5,
-    "cabalgaba": 4
+    "descubrir": 3,
+    "destruir": 1,
+    "optimizar": 4,
+    "perder": 2,
+    "encontrar": 5,
+    "cabalgar": 4
   },
   "complements": {
     "el código": 5,

@@ -1,6 +1,6 @@
 from pathlib import Path
 from utils import read_json
-from generator import generate_sentence
+from generator import generate_story
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -12,9 +12,10 @@ def main():
         print("No se pudieron cargar los datos.")
         return
     
-    sentence = generate_sentence(words_data)
+    story = generate_story(words_data)
 
-    print(sentence)
+    for i in story:
+        print(i)
 
 if __name__ == "__main__":
     main()
